@@ -19,10 +19,23 @@ export default {
   },
 
   methods: {
+    getApi(){
+      axios.get(store.apiUrl)
+      .then(res => {
+        console.log(res.data.results[0].title);
+        console.log(res.data.results[0].original_title);
+        console.log(res.data.results[0].original_language);
+        console.log(res.data.results[0].vote_average);
+        console.log(res.data.results[0].poster_path);
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
     
   },
   mounted() {
-    
+    this.getApi()
   },
 }
 

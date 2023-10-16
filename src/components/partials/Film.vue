@@ -1,12 +1,24 @@
 <script>
-export default {
-  name: 'Film'
+import GeneralCard from './GeneralCard.vue';
 
+export default {
+  name: 'Film',
+  components:{
+    GeneralCard
+
+  }
 }
 </script>
 
 <template>
-  <div>Film</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <GeneralCard />
+      </div>
+    </div>
+  </div>
+
 </template>
 
 
