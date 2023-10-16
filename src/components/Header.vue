@@ -1,15 +1,23 @@
 <script>
+import { store } from '../data/store'
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  data() {
+    return {
+      store
+      
+    }
+  },
 
 }
 </script>
 
 <template>
   <header class="d-flex justify-content-between align-items-center px-5">
+
     <div class="logo">
       <img src="/public/logo-boolflix.png" alt="">
-
     </div>
 
     <div class="search-bar d-flex">
@@ -19,8 +27,9 @@ export default {
         <option value="SerieTv">SerieTv</option>
       </select>
 
-      <input class="search-name me-3" type="text" placeholder="Ricerca per nome">
-      <button class="btn btn-danger">Cerca</button>
+      <input @keyup.enter="$emit('startSearch')" v-model="store.nameToSearch" class="search-name me-3" type="text" placeholder="Ricerca per nome">
+ 
+      <button @click="$emit('startSearch')" class="btn btn-danger">Cerca</button>
 
     </div>
   </header>

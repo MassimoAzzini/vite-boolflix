@@ -20,13 +20,13 @@ export default {
 
   methods: {
     getApi(){
-      axios.get(store.apiUrl)
+      axios.get(store.apiUrlFilm, {
+        params: {
+          query: store.nameToSearch,
+        }
+      })
       .then(res => {
-        console.log(res.data.results[0].title);
-        console.log(res.data.results[0].original_title);
-        console.log(res.data.results[0].original_language);
-        console.log(res.data.results[0].vote_average);
-        console.log(res.data.results[0].poster_path);
+        store.cardFilmArray = res.data.results
       })
       .catch(err => {
         console.log(err)
@@ -35,7 +35,8 @@ export default {
     
   },
   mounted() {
-    this.getApi()
+    this.getApi(),
+    console.log(store.cardFilmArray);
   },
 }
 
@@ -45,7 +46,7 @@ export default {
 <template>
   <div>
   <Header />
-  <Main />
+  <Main @startSearch="getApi()" />
 
   </div>
 
