@@ -17,13 +17,20 @@ export default {
       store
     }
   },
+
+  methods: {
+    
+  },
+  mounted() {
+    
+  },
 }
 
 
 </script>
 
 <template>
-  <div class="container">
+  <div>
   <Header />
   <Main />
 
