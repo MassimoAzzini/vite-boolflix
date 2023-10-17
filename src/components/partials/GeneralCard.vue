@@ -9,10 +9,11 @@ export default {
   },
   data() {
     return {
-      store
+      store,
+      rateStars: '',
     }
-  },
-  
+  }
+
 
 }
 
@@ -40,12 +41,10 @@ export default {
       <div class="vote">
         <span class="fw-bold">Voto: </span>
         <span>{{ card.vote_average }}</span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
+        <span v-for="star in this.rateStars" :key="star" class="fa fa-star checked"></span>
         <span class="fa fa-star"></span>
       </div>
+      
       <div class="Overview">
         <span class="fw-bold">Overview: </span>
         <span>{{ card.overview }}</span>
