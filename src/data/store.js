@@ -8,6 +8,8 @@ export const store = reactive ({
     query: '',
   },
 
+  flagsArray: ['en', 'it'],
+
   type: '',
   movie: [],
   tv: [],

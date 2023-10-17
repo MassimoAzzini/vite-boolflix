@@ -55,16 +55,17 @@ export default {
     <Header @startSearch="startSearch" />
     <!-- <Main v-if="store.movie.length > 0" title="Film" type="movie" />
     <Main v-if="store.tv.length > 0" title="Serie Tv" type="tv" /> -->
-      
-    <h1 v-if="store.movie.length == 0 || store.tv.length == 0">{{ message }}</h1>
+    <div class="container-main">
+      <h1 v-if="store.movie.length == 0 || store.tv.length == 0">{{ message }}</h1>
 
-    <div v-else>
-      <Main v-if="store.type === 'movie'" title="Film" type="movie" />
-      <Main v-if="store.type === 'tv'" title="Serie Tv" type="tv" />
-      <div v-if="store.type === ''">
-        <Main title="Film" type="movie" />
-        <Main title="Serie Tv" type="tv" />
-      </div>
+      <di v-else>
+        <Main v-if="store.type === 'movie'" title="Film" type="movie" />
+        <Main v-if="store.type === 'tv'" title="Serie Tv" type="tv" />
+        <div v-if="store.type === ''">
+          <Main title="Film" type="movie" />
+          <Main title="Serie Tv" type="tv" />
+        </div>
+      </di>
     </div>
 
   </div>
@@ -75,4 +76,10 @@ export default {
 
 <style lang="scss">
 @use './scss/main.scss';
+
+.container-main {
+  height: calc(100vh - 100px);
+  overflow: auto;
+  background-color: grey;
+}
 </style>
