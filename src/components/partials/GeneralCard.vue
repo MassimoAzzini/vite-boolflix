@@ -2,11 +2,7 @@
 export default {
   name: 'GeneralCard',
   props: {
-    Title: String,
-    OrigTitle: String,
-    OrigLanguage: String,
-    Vote: Number,
-    Overview: String,
+    card: Object,
   }
 
 
@@ -14,30 +10,30 @@ export default {
 </script>
 
 <template>
-  <div class="col-2">
+  <div class="col">
     <div class="card card-cst">
 
       <div class="title">
         <span class="fw-bold">Titolo:</span>
-        <span>{{ Title }}</span>
+        <span>{{ card.title || card.name }}</span>
       </div>
 
       <div class="original-title">
         <span class="fw-bold">Titolo originale:</span>
-        <span>OrigTitle{{ OrigTitle }}</span>
+        <span>OrigTitle{{ card.original_title || card.original_name }}</span>
       </div>
 
       <div class="language">
-        <span class="language">{{ OrigLanguage }}</span>
+        <span class="language">{{ card.original_language }}</span>
       </div>
 
       <div class="vote">
         <span class="fw-bold">Voto:</span>
-        <span>{{ Vote }}</span>
+        <span>{{ card.vote_average }}</span>
       </div>
       <div class="Overview">
         <span class="fw-bold">Overview:</span>
-        <span>{{ Overview }}</span>
+        <span>{{ card.overview }}</span>
       </div>
 
     </div>
@@ -48,8 +44,12 @@ export default {
 
 <style lang="scss" scoped>
 .card-cst {
-  font-size: 0.8rem;
+  width: 220px;
+  height: 340px;
+  font-size: 0.7rem;
   padding: 10px;
+  overflow: auto;
+  margin-bottom: 20px;
 }
 
 </style>

@@ -21,10 +21,10 @@ export default {
     </div>
 
     <div class="search-bar d-flex">
-      <select class="form-select me-3" aria-label="Default select example">
-        <option selected value="All">All</option>
-        <option value="Film">Film</option>
-        <option value="SerieTv">SerieTv</option>
+      <select v-model="store.type" class="form-select me-3" aria-label="Default select example">
+        <option selected value="">All</option>
+        <option value="movie">Film</option>
+        <option value="tv">SerieTv</option>
       </select>
 
       <input @keyup.enter="$emit('startSearch')" v-model.trim="store.apiParams.query" class="search-name me-3" type="text" placeholder="Ricerca per nome">

@@ -14,28 +14,36 @@ export default {
 
   data() {
     return {
-      store
+      store,
+      message: 'Effettua una ricerca'
     }
   },
 
   methods: {
-    getApi(){
-      axios.get(store.apiUrlFilm, {
+    getApi(type){
+      axios.get(store.apiUrl + type, {
         params: store.apiParams
       })
 
       .then(res => {
-        store.cardFilmArray = res.data.results
+        store[type] = res.data.results
+        
       })
       .catch(err => {
         console.log(err)
       })
+    },
+
+    startSearch(){
+      this.getApi('movie')
+      this.getApi('tv')
+
     }
     
   },
 
   mounted() {
-    this.getApi()
+
   },
 }
 
@@ -44,8 +52,20 @@ export default {
 
 <template>
   <div>
-  <Header />
-  <Main @startSearch="getApi" />
+    <Header @startSearch="startSearch" />
+    <!-- <Main v-if="store.movie.length > 0" title="Film" type="movie" />
+    <Main v-if="store.tv.length > 0" title="Serie Tv" type="tv" /> -->
+      
+    <h1 v-if="store.movie.length == 0 || store.tv.length == 0">{{ message }}</h1>
+
+    <div v-else>
+      <Main v-if="store.type === 'movie'" title="Film" type="movie" />
+      <Main v-if="store.type === 'tv'" title="Serie Tv" type="tv" />
+      <div v-if="store.type === ''">
+        <Main title="Film" type="movie" />
+        <Main title="Serie Tv" type="tv" />
+      </div>
+    </div>
 
   </div>
 

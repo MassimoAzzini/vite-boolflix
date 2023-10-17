@@ -1,24 +1,41 @@
 <script>
-import Film from './partials/Film.vue';
-import SerieTv from './partials/SerieTv.vue';
+import GeneralCard from './partials/GeneralCard.vue';
+import { store } from '../data/store'
+
 
 export default {
   name: 'Main',
+  props: {
+    title: String,
+    type: String
+  },
 
   components: {
-    Film,
-    SerieTv
-  }
+    GeneralCard
+  },
+  
+  data() {
+    return {
+      store
+    }
+  },
+
 
 }
 </script>
 
 <template>
   <main>
-    <h1>Main</h1>
     
-    <Film />
-    <SerieTv />
+    <div class="container cont-cast">
+      <h1>{{ title }}</h1>
+      <div class="row flex-wrap">
+        <GeneralCard
+            v-for="card in store[type]"
+            :key="card.id"
+            :card="card" />
+      </div>
+    </div>
 
   </main>
 </template>
@@ -27,9 +44,6 @@ export default {
 <style lang="scss" scoped>
 main {
   width: 100%;
-  height: calc(100vh - 100px);
-  background-color: grey;
-  overflow: auto;
 }
 
 </style>
