@@ -21,10 +21,9 @@ export default {
   methods: {
     getApi(){
       axios.get(store.apiUrlFilm, {
-        params: {
-          query: store.nameToSearch,
-        }
+        params: store.apiParams
       })
+
       .then(res => {
         store.cardFilmArray = res.data.results
       })
@@ -34,9 +33,9 @@ export default {
     }
     
   },
+
   mounted() {
-    this.getApi(),
-    console.log(store.cardFilmArray);
+    this.getApi()
   },
 }
 
@@ -46,7 +45,7 @@ export default {
 <template>
   <div>
   <Header />
-  <Main @startSearch="getApi()" />
+  <Main @startSearch="getApi" />
 
   </div>
 

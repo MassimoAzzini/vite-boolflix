@@ -27,7 +27,7 @@ export default {
         <option value="SerieTv">SerieTv</option>
       </select>
 
-      <input @keyup.enter="$emit('startSearch')" v-model="store.nameToSearch" class="search-name me-3" type="text" placeholder="Ricerca per nome">
+      <input @keyup.enter="$emit('startSearch')" v-model.trim="store.apiParams.query" class="search-name me-3" type="text" placeholder="Ricerca per nome">
  
       <button @click="$emit('startSearch')" class="btn btn-danger">Cerca</button>
 
