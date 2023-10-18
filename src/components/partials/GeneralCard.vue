@@ -26,7 +26,7 @@ export default {
 <template>
   <div class="col">
     <div class="card card-cst position-relative">
-      <div class="info">
+      <div class="info w-100 h-100 p-2">
         <div class="title">
           <span class="fw-bold">Titolo:</span>
           <span class="ms-2">{{ card.title || card.name }}</span>
@@ -38,7 +38,7 @@ export default {
         </div>
 
         <div class="language mt-2">
-          <img v-if="store.flagsArray.includes(card.original_language)" :src="`/public/` + card.original_language+`.png`" :alt="card.original_language">
+          <img v-if="store.flagsArray.includes(card.original_language)" :src="`/` + card.original_language+`.png`" :alt="card.original_language">
           <span v-else class="language">{{ card.original_language }}</span>
         </div>
 
@@ -55,7 +55,7 @@ export default {
 
       </div>
 
-      <div class="poster position-absolute w-100 h-100">
+      <div class="poster w-100 h-100">
         <img class="w-100 h-100" :src="`https://image.tmdb.org/t/p/w342/` +card.poster_path" alt="">
       </div>
     </div>
@@ -69,36 +69,41 @@ export default {
   width: 220px;
   height: 340px;
   font-size: 0.7rem;
-  padding: 10px;
   margin-bottom: 20px;
-  background-color: black;
+  background-color: rgba(#000000, 0.7);
   border: 1px solid white;
   color: white;
   overflow: hidden;
   transition: all 1s;
 
-  .poster {
-    width: 220px;
-    height: 340px;
+  .info {
+    position: absolute;
     top: 0;
     left: 0;
-    transition: all 1s;
-  }
+    opacity: 0;
 
-  .overview {
-    overflow: auto;
-  }
-
-  .language {
-    width: 20px;
-
-    img {
-      width: 100%;
+    .overview {
+      height: 40%;
+      overflow: auto;
+    }
+  
+    .language {
+      width: 20px;
+      
+      img {
+        width: 100%;
+      }
+    }
+  
+    .checked {
+      color: orange;
     }
   }
 
-  .checked {
-    color: orange;
+
+  .poster {
+    opacity: 1;
+    transition: all 1s;
   }
 
   &:hover  {
@@ -106,7 +111,10 @@ export default {
     
     .poster {
       opacity: 0.2;
-      z-index: 0;
+    }
+
+    .info {
+      opacity: 1;
     }
   }
   
