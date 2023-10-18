@@ -8,10 +8,15 @@ export const store = reactive ({
     query: '',
   },
 
+  apiUrlCast: 'https://api.themoviedb.org/3/',
+  
   flagsArray: ['en', 'it'],
 
   type: '',
   movie: [],
   tv: [],
+
+  // https://api.themoviedb.org/3/movie/{movie_id}/credits,
+  // https://api.themoviedb.org/3/tv/{serie_id}/credits
   
 })

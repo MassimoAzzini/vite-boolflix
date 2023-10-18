@@ -40,11 +40,11 @@ export default {
 
 header {
   width: 100%;
-  height: 100px;
+  height: 65px;
   background-color: black;
 
   .logo {
-    width: 200px;
+    width: 95px;
     img {
       width: 100%;
     }
