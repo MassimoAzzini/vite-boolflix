@@ -67,7 +67,7 @@ export default {
       </div>
 
       <!-- info film in caso di mancata immagine -->
-      <div v-else class="d-flex flex-column w-100 h-100 p-2">
+      <div v-else class="d-flex text-start flex-column w-100 h-100 p-2">
 
         <div class="title">
           <span class="fw-bold">Titolo:</span>
@@ -98,7 +98,7 @@ export default {
       </div>
 
 
-      <div class="info d-flex flex-column w-100 h-100 p-2">
+      <div class="info d-flex flex-column text-start w-100 h-100 p-2">
 
         <div class="title">
           <span class="fw-bold">Titolo:</span>
