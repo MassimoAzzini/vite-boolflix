@@ -34,7 +34,7 @@ export default {
             v-for="card in store[type]"
             :key="card.id"
             :card="card"
-            :type="this.type" />
+            :type="type" />
       </div>
     </div>
 

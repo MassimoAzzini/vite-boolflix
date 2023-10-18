@@ -23,8 +23,8 @@ export default {
       return Math.ceil(this.card.vote_average / 2)
     },
 
-    getApiCast(type){
-      axios.get(store.apiUrlCast + type + '/' + this.card.id + '/credits', {
+    getApiCast(gen){
+      axios.get(store.apiUrlCast + gen + '/' + this.card.id + '/credits', {
         params:{
           api_key: store.apiParams.api_key,
           language: store.apiParams.language
@@ -43,7 +43,9 @@ export default {
   },
 
   mounted() {
-    this.getApiCast(type)
+    this.getApiCast(this.type)
+    console.log(this.type);
+
   },
 
 
