@@ -18,11 +18,7 @@ export default {
     }
   },
 
-  computed: {
-    rateStars(){
-      return Math.ceil(this.card.vote_average / 2)
-    },
-
+  methods: {
     getApiCast(gen){
       axios.get(store.apiUrlCast + gen + '/' + this.card.id + '/credits', {
         params:{
@@ -32,19 +28,28 @@ export default {
 
       })
       .then((res) =>{
-        this.cast = res.data.cast;
-        console.log(this.cast);
+        this.cast = res.data.cast[1].name;
+        console.log(this.cast)
+
 
       })
       .catch((err) => {
         console.log(err);
       })
     },
+
+    
+  },
+
+  computed: {
+    rateStars(){
+      return Math.ceil(this.card.vote_average / 2)
+    },
+
   },
 
   mounted() {
     this.getApiCast(this.type)
-    console.log(this.type);
 
   },
 
