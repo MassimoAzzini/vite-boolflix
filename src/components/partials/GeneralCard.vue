@@ -19,8 +19,8 @@ export default {
   },
 
   methods: {
-    getApiCast(gen){
-      axios.get(store.apiUrlCast + gen + '/' + this.card.id + '/credits', {
+    getApiCast(category){
+      axios.get(store.apiUrl + category + '/' + this.card.id + '/credits', {
         params:{
           api_key: store.apiParams.api_key,
           language: store.apiParams.language
@@ -54,7 +54,7 @@ export default {
 
   mounted() {
     this.getApiCast(this.type)
-
+    console.log(this.card.id);
   },
 
 

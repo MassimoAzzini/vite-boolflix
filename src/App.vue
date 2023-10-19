@@ -21,7 +21,7 @@ export default {
 
   methods: {
     getApi(type){
-      axios.get(store.apiUrl + type, {
+      axios.get(store.apiUrl + 'search/' + type, {
         params: store.apiParams
       })
 
@@ -38,7 +38,7 @@ export default {
       this.getApi('movie')
       this.getApi('tv')
 
-    }
+    },
     
   },
 
@@ -78,7 +78,7 @@ export default {
 @use './scss/main.scss';
 
 .container-main {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 65px);
   overflow: auto;
   background-color: #141414;
 
