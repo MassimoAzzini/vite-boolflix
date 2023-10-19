@@ -9,7 +9,8 @@ export const store = reactive ({
   },
 
   flagsArray: ['en', 'it'],
-  genresArray: [],
+  genresMovieArray: [],
+  genresTvArray: [],
 
   type: '',
   genre: '',

@@ -39,6 +39,24 @@ export default {
       this.getApi('tv')
 
     },
+
+    // getApiGenresList(category){
+    //     axios.get(store.apiUrl + 'genre/' + category + '/list', {
+    //       params:{
+    //       api_key: store.apiParams.api_key,
+    //       language: store.apiParams.language
+    //     }
+
+    //     })
+    //     .then (res => {
+    //       store.genresArray = res.data.genres;
+    //     })
+
+    //     .catch (err => {
+    //       console.log(err);
+    //     })
+    //   }
+
     
   },
 
