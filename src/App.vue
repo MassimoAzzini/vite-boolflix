@@ -78,7 +78,7 @@ export default {
 @use './scss/main.scss';
 
 .container-main {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 65px);
   overflow: auto;
   background-color: #141414;
 
