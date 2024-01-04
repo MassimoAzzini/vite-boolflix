@@ -19,8 +19,8 @@ export default {
   },
 
   methods: {
-    getApiCast(gen){
-      axios.get(store.apiUrlCast + gen + '/' + this.card.id + '/credits', {
+    getApiCast(category){
+      axios.get(store.apiUrl + category + '/' + this.card.id + '/credits', {
         params:{
           api_key: store.apiParams.api_key,
           language: store.apiParams.language
@@ -28,7 +28,11 @@ export default {
 
       })
       .then((res) =>{
-        this.cast = res.data.cast[1].name;
+        // this.cast = res.data.cast[1].name;
+        // console.log(this.cast)
+        for (let i= 0; i < 5; i++){
+          this.cast.push(res.data.cast[i].name)
+        }
         console.log(this.cast)
 
 
@@ -50,7 +54,7 @@ export default {
 
   mounted() {
     this.getApiCast(this.type)
-
+    console.log(this.card.id);
   },
 
 
@@ -67,33 +71,9 @@ export default {
       </div>
 
       <!-- info film in caso di mancata immagine -->
-      <div v-else class="d-flex text-start flex-column w-100 h-100 p-2">
+      <div v-else class="card-title d-flex justify-content-center align-items-center w-100 h-100 p-2">
 
-        <div class="title">
-          <span class="fw-bold">Titolo:</span>
-          <span class="ms-2">{{ card.title || card.name }}</span>
-        </div>
-
-        <div class="original-title mt-2">
-          <span class="fw-bold">Titolo originale: </span>
-          <span class="ms-2">OrigTitle{{ card.original_title || card.original_name }}</span>
-        </div>
-
-        <div class="language mt-2">
-          <img v-if="store.flagsArray.includes(card.original_language)" :src="`/` + card.original_language+`.png`" :alt="card.original_language">
-          <span v-else class="language">{{ card.original_language }}</span>
-        </div>
-
-        <div class="vote mt-2">
-          <span class="fw-bold me-2">Voto:</span>
-          <span v-for="starRate in rateStars" :key="starRate" class="fa fa-star checked"></span>
-          <span v-for="star in 5 - rateStars" :key="star" class="fa fa-star"></span>
-        </div>
-
-        <div class="overview mt-2">
-          <span class="fw-bold">Overview: </span>
-          <span class="ms-2">{{ card.overview }}</span>
-        </div>
+          <h1>{{ card.title || card.name }}</h1>
 
       </div>
 
@@ -122,11 +102,11 @@ export default {
         </div>
 
         <div class="overview mt-2">
-          <span class="fw-bold">Overview: </span>
+          <span class="fw-bold">Overview:</span>
           <span class="ms-2">{{ card.overview }}</span>
-          <div>
-            <span>Cast:</span>
-            <span></span>
+          <div class="mt-2">
+            <span class="fw-bold">Cast:</span>
+            <span class="ms-2">{{this.cast.join(", ")}}</span>
           </div>
         </div>
 
@@ -168,6 +148,7 @@ export default {
     top: 0;
     left: 0;
     opacity: 0;
+    transition: all 1s;
 
     .overview {
       overflow: auto;
@@ -180,6 +161,11 @@ export default {
     opacity: 1;
     transition: all 1s;
   }
+  .card-title {
+    transition: all 1s;
+  }
+
+
 
   &:hover  {
     
@@ -191,6 +177,10 @@ export default {
 
     .info {
       opacity: 1;
+    }
+
+    .card-title {
+      opacity: 0;
     }
   }
   
